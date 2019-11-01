@@ -70,14 +70,15 @@ unsigned char SeeedQTouch::readReg(unsigned char addr_reg)
 
     Wire.requestFrom(ADDR_QTOUCH, 1); // read a byte
 
-    while(Wire.available()) 
+    if ( Wire.available() > 0 )
     {
-        return Wire.read();
+      return Wire.read();
     }
+	  return 0;
 }
 
 // write data to register 
-unsigned char SeeedQTouch::writeReg(unsigned char addr_reg, unsigned char dta)      // write register
+void SeeedQTouch::writeReg(unsigned char addr_reg, unsigned char dta)      // write register
 {
     Wire.beginTransmission(ADDR_QTOUCH);
     Wire.write(addr_reg); // register to read

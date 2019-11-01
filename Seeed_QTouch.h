@@ -90,7 +90,7 @@ public:
 private:
 
     unsigned char readReg(unsigned char addr_reg);                          // read register
-    unsigned char writeReg(unsigned char addr_reg, unsigned char dta);      // write register
+    void writeReg(unsigned char addr_reg, unsigned char dta);      // write register
 };
 
 extern SeeedQTouch QTouch;
